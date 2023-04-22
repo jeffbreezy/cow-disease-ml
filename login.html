@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup/Login Form</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #44BBAD;
+		}
+		
+		.Container {
+			margin: 100px auto;
+			width: 400px;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 20px #666;
+		}
+		
+		h2 {
+			text-align: center;
+		}
+		
+		form {
+			display: flex;
+			flex-direction: column;
+		}
+		
+		label {
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+		
+		input[type="text"], input[type="password"] {
+			padding: 10px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px #666;
+		}
+		
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+		
+		.login-link {
+			text-align: center;
+			margin-top: 20px;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="Container">
+		<h2>Signup Form</h2>
+		<form action="#" method="post">
+            <label for ="username">Username</label>
+            <input type="text" name="username" id="username" required>
+			
+            <label for="email">Email:</label>
+			<input type="text" name="email" id="email" required>
+			
+			<label for="password">Password:</label>
+			<input type="password" name="password" id="password" required>
+			
+			<input type="submit" value="Signup">
+		</form>
+		
+		<div class="login-link">
+			Already have an account? <a href="#">Login here</a>
+		</div>
+	</div>
+	
+	<div class="Container">
+		<h2>Login Form</h2>
+		<form action="#" method="post">
+			<label for="email">Email:</label>
+			<input type="text" name="email" id="email" required>
+			
+			<label for="password">Password:</label>
+			<input type="password" name="password" id="password" required>
+			
+			<input type="submit" value="Login">
+		</form>
+		
+		<div class="login-link">
+			Don't have an account yet? <a href="#">Signup here</a>
+		</div>
+	</div>
+</body>
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+    import {getDatabase } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyD4_JPXKP_Vk3_duKncYEEyfJUHyD-7QTo",
+      authDomain: "cow-disease-ml.firebaseapp.com",
+      projectId: "cow-disease-ml",
+      storageBucket: "cow-disease-ml.appspot.com",
+      messagingSenderId: "215031676850",
+      appId: "1:215031676850:web:e58599d98e4e4c4fd96eab"
+    };
+   
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getdatabase(app);
+    const auth = getAuth();
+
+    Container.addeventlistner('click', (e)=>{
+
+    var email =document.getElementById('email').value;
+    var password =document.getElementById('password').value;
+    var username =document.getElementById('username').value;
+        
+
+
+
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user
+    alert('user created');
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;  
+
+    alert('errorMessage');
+
+    });
+
+});
+  </script>
+</html>
